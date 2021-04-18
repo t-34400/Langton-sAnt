@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClInclude Include="Field.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Field.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
