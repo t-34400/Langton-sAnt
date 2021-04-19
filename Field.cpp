@@ -1,23 +1,23 @@
 #include "Field.h"
 
-Field::Field(std::size_t maxX, std::size_t maxY)
+Field::Field(const std::size_t maxX, const std::size_t maxY) noexcept
 	:m_maxX{ maxX }, m_maxY{ maxY }
 {
 	m_fieldColor.resize(m_maxX * m_maxY);
 	clear();
 }
 
-void Field::addAnt(AbstructAnt&& ant, int x, int y)
+void Field::addAnt(AbstructAnt&& ant)
+{
+	m_ants.push_back(ant);
+}
+
+void Field::stepForward(const int n)
 {
 
 }
 
-void Field::stepForward(int n)
-{
-
-}
-
-void Field::getColor(std::size_t x, std::size_t y) { return m_fieldColor[x + y * m_maxX]; }
+int Field::getColor(const std::size_t x, const std::size_t y) const { return m_fieldColor[x + y * m_maxX]; }
 
 void Field::clear()
 {
@@ -25,7 +25,7 @@ void Field::clear()
 		color = 0;
 }
 
-friend std::ostream& Field::operator<<(std::ofstream& out, const Field& field)
+std::ostream& operator<<(std::ofstream& out, const Field& field)
 {
 
 }

@@ -21,11 +21,11 @@ private:
 	inline std::size_t decrementY(std::size_t y) const { return (y == 0) ? (m_maxY - 1) : --y; }
 
 public:
-	Field(std::size_t maxX, std::size_t maxY);
+	Field(const std::size_t maxX, const std::size_t maxY) noexcept;
 
 	void addAnt(AbstructAnt&& ant);
-	void stepForward(int n = 1);
-	void getColor(std::size_t x, std::size_t y);
+	void stepForward(const int n = 1);
+	int getColor(const std::size_t x, const std::size_t y) const;
 	void clear();
 
 	friend std::ostream& operator<<(std::ofstream& out, const Field& field);
