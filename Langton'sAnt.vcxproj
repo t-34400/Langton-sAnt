@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AbstructAnt.h" />
     <ClInclude Include="Field.h" />
   </ItemGroup>
   <ItemGroup>

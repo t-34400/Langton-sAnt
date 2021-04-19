@@ -7,7 +7,7 @@ Field::Field(const std::size_t maxX, const std::size_t maxY) noexcept
 	clear();
 }
 
-void Field::addAnt(AbstructAnt&& ant)
+void Field::addAnt(AbstructAnt&& ant, std::size_t x, std::size_t y)
 {
 	m_ants.push_back(ant);
 }
