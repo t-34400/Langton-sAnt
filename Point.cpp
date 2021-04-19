@@ -13,7 +13,7 @@ Point::latticeIndex_t Point::up()
 		m_x = 0;
 	else
 		++m_x;
-	return m_x;
+	return getLatticeIndex();
 }
 Point::latticeIndex_t Point::right()
 {
@@ -21,7 +21,7 @@ Point::latticeIndex_t Point::right()
 		m_y = 0;
 	else
 		++m_y;
-	return m_y;
+	return getLatticeIndex();
 }
 Point::latticeIndex_t Point::down()
 {
@@ -29,7 +29,7 @@ Point::latticeIndex_t Point::down()
 		m_x = m_maxX - 1;
 	else
 		--m_x;
-	return m_x;
+	return getLatticeIndex();
 }
 Point::latticeIndex_t Point::left()
 {
@@ -37,5 +37,7 @@ Point::latticeIndex_t Point::left()
 		m_y = m_maxY - 1;
 	else
 		--m_y;
-	return m_y;
+	return getLatticeIndex();
 }
+
+Point::latticeIndex_t Point::getLatticeIndex() const { return m_x + m_y * m_maxX; }

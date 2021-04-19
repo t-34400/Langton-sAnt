@@ -14,6 +14,7 @@ private:
 	coordinate_t m_x{};
 	coordinate_t m_y{};
 
+
 public:
 	Point(coordinate_t maxX, coordinate_t maxY, coordinate_t x, coordinate_t y);
 
@@ -21,4 +22,6 @@ public:
 	latticeIndex_t right();
 	latticeIndex_t down();
 	latticeIndex_t left();
+
+	latticeIndex_t getLatticeIndex() const;
 };
