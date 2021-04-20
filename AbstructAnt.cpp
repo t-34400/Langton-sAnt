@@ -27,5 +27,7 @@ AbstructAnt::AbstructAnt(const std::string& turnDirections, direction_t directio
 AbstructAnt::direction_t AbstructAnt::getNextDirection(fieldColor color)
 {
 	turn_t turnDirection{ m_turnDirections.at(color % m_directionsLength) };
-	m_direction = (m_direction + turnDirection) % direction::max_direction_index;
+	// add max_direction_index so that m_direction has the value in [0, max_direction_index] 
+	m_direction = (m_direction + direction::max_direction_index + turnDirection) % direction::max_direction_index;
+	return m_direction;
 }

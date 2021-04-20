@@ -1,5 +1,6 @@
 #pragma once
 #include "AbstructAnt.h"
+#include "Point.h"
 #include <iostream>
 #include <vector>
 
@@ -13,6 +14,8 @@ private:
 	std::vector<AbstructAnt::fieldColor> m_fieldColor;
 	// ants
 	std::vector<AbstructAnt> m_ants{};
+	// the positions of ants
+	std::vector<Point> m_antsPositions{};
 
 public:
 	Field(const std::size_t maxX, const std::size_t maxY) noexcept;
@@ -22,5 +25,5 @@ public:
 	int getColor(const std::size_t x, const std::size_t y) const;
 	void clear();
 
-	friend std::ostream& operator<<(std::ofstream& out, const Field& field);
+	friend std::ostream& operator<<(std::ostream& out, const Field& field);
 };
