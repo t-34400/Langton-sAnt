@@ -1,32 +1,35 @@
 #pragma once
+#include "AbstructAnt.h"
+#include "Point.h"
 #include <iostream>
 #include <vector>
-
-class AbstructAnt;
 
 class Field
 {
 private:
-	const std::size_t m_maxX;
-	const std::size_t m_maxY;
+	const int m_maxX;
+	const int m_maxY;
 
 	// field color
-	std::vector<int> m_fieldColor;
+	std::vector<AbstructAnt::fieldColor> m_fieldColor;
 	// ants
 	std::vector<AbstructAnt> m_ants{};
+	// the positions of ants
+	std::vector<Point> m_antsPositions{};
 
-	inline std::size_t incrementX(std::size_t x) const { return (x < m_maxX - 1) ? ++x : 0; }
-	inline std::size_t incrementY(std::size_t y) const { return (y < m_maxY - 1) ? ++y : 0; }
-	inline std::size_t decrementX(std::size_t x) const { return (x == 0) ? (m_maxX - 1) : --x; }
-	inline std::size_t decrementY(std::size_t y) const { return (y == 0) ? (m_maxY - 1) : --y; }
+	void incrementColor(Point::latticeIndex_t index);
 
 public:
-	Field(std::size_t maxX, std::size_t maxY);
+	Field(const int maxX, const int maxY) noexcept;
 
-	void addAnt(AbstructAnt&& ant);
-	void stepForward(int n = 1);
-	void getColor(std::size_t x, std::size_t y);
+	void addAnt(AbstructAnt&& ant, Point::coordinate_t x = 0, Point::coordinate_t y = 0);
+	void stepForward(const int n = 1);
 	void clear();
 
-	friend std::ostream& operator<<(std::ofstream& out, const Field& field);
+	AbstructAnt::fieldColor getColor(const std::size_t x, const std::size_t y) const;
+	std::size_t getAntNumber() const;
+	Point getAntsPosition(std::size_t index) const;
+	Point getAntsDirection(std::size_t index) const;
+
+	friend std::ostream& operator<<(std::ostream& out, const Field& field);
 };
