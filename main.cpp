@@ -5,7 +5,7 @@ int main()
 {
 	Field field(20, 20);
 	field.addAnt(AbstructAnt("LR"));
-	for (int count{ 0 }; count < 20; ++count)
+	for (int count{ 0 }; count < 100; ++count)
 	{
 		std::cout << field<<'\n';
 		field.stepForward();

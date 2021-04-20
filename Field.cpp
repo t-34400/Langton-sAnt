@@ -1,13 +1,12 @@
 #include "Field.h"
 
-Field::Field(const std::size_t maxX, const std::size_t maxY) noexcept
-	:m_maxX{ maxX }, m_maxY{ maxY }
+Field::Field(const int maxX, const int maxY) noexcept
+	:m_maxX{ maxX }, m_maxY{ maxY }, m_fieldColor(maxX * maxY)
 {
-	m_fieldColor.resize(m_maxX * m_maxY);
 	clear();
 }
 
-void Field::addAnt(AbstructAnt&& ant, std::size_t x, std::size_t y)
+void Field::addAnt(AbstructAnt&& ant, Point::coordinate_t x, Point::coordinate_t y)
 {
 	m_ants.push_back(ant);
 	m_antsPositions.push_back(Point{ m_maxX,m_maxY,x,y });
@@ -22,17 +21,23 @@ void Field::stepForward(const int n)
 		std::size_t index{ 0 };
 		for (auto& ant : m_ants)
 		{
-			switch (ant.getNextDirection(m_fieldColor[m_antsPositions[index].getLatticeIndex()]))
+			int currentPosition{ m_antsPositions[index].getLatticeIndex() };
+			switch (ant.getNextDirection(m_fieldColor[currentPosition]))
 			{
 			case AbstructAnt::direction::UP:
-				incrementColor(m_antsPositions[index].up());
+				m_antsPositions[index].up();
+				break;
 			case AbstructAnt::direction::RIGHT:
-				incrementColor(m_antsPositions[index].right());
+				m_antsPositions[index].right();
+				break;
 			case AbstructAnt::direction::DOWN:
-				incrementColor(m_antsPositions[index].down());
+				m_antsPositions[index].down();
+				break;
 			case AbstructAnt::direction::LEFT:
-				incrementColor(m_antsPositions[index].left());
+				m_antsPositions[index].left();
+				break;
 			}
+			incrementColor(currentPosition);
 			++index;
 		}
 	}
@@ -51,9 +56,9 @@ Point Field::getAntsDirection(std::size_t index) const { return m_antsPositions.
 
 std::ostream& operator<<(std::ostream& out, const Field& field)
 {
-	for (std::size_t y{ 0 }; y < field.m_maxY; ++y)
+	for (int y{ 0 }; y < field.m_maxY; ++y)
 	{
-		for (std::size_t x{ 0 }; x < field.m_maxX; ++x)
+		for (int x{ 0 }; x < field.m_maxX; ++x)
 		{
 			out << field.getColor(x, y) << ' ';
 		}

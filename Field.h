@@ -7,8 +7,8 @@
 class Field
 {
 private:
-	const std::size_t m_maxX;
-	const std::size_t m_maxY;
+	const int m_maxX;
+	const int m_maxY;
 
 	// field color
 	std::vector<AbstructAnt::fieldColor> m_fieldColor;
@@ -20,9 +20,9 @@ private:
 	void incrementColor(Point::latticeIndex_t index);
 
 public:
-	Field(const std::size_t maxX, const std::size_t maxY) noexcept;
+	Field(const int maxX, const int maxY) noexcept;
 
-	void addAnt(AbstructAnt&& ant, std::size_t x = 0, std::size_t y = 0);
+	void addAnt(AbstructAnt&& ant, Point::coordinate_t x = 0, Point::coordinate_t y = 0);
 	void stepForward(const int n = 1);
 	void clear();
 
