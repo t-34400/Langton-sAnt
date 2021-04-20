@@ -13,6 +13,8 @@ void Field::addAnt(AbstructAnt&& ant, std::size_t x, std::size_t y)
 	m_antsPositions.push_back(Point{ m_maxX,m_maxY,x,y });
 }
 
+void Field::incrementColor(Point::latticeIndex_t index) { ++m_fieldColor[index]; }
+
 void Field::stepForward(const int n)
 {
 	for (int count{ 0 }; count < n; ++count)
@@ -23,13 +25,13 @@ void Field::stepForward(const int n)
 			switch (ant.getNextDirection(m_fieldColor[m_antsPositions[index].getLatticeIndex()]))
 			{
 			case AbstructAnt::direction::UP:
-				m_antsPositions[index].up();
+				incrementColor(m_antsPositions[index].up());
 			case AbstructAnt::direction::RIGHT:
-				m_antsPositions[index].right();
+				incrementColor(m_antsPositions[index].right());
 			case AbstructAnt::direction::DOWN:
-				m_antsPositions[index].down();
+				incrementColor(m_antsPositions[index].down());
 			case AbstructAnt::direction::LEFT:
-				m_antsPositions[index].left();
+				incrementColor(m_antsPositions[index].left());
 			}
 			++index;
 		}

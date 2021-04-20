@@ -17,6 +17,8 @@ private:
 	// the positions of ants
 	std::vector<Point> m_antsPositions{};
 
+	void incrementColor(Point::latticeIndex_t index);
+
 public:
 	Field(const std::size_t maxX, const std::size_t maxY) noexcept;
 
