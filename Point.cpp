@@ -41,3 +41,9 @@ Point::latticeIndex_t Point::left()
 }
 
 Point::latticeIndex_t Point::getLatticeIndex() const { return m_x + m_y * m_maxX; }
+
+std::ostream& operator<<(std::ostream& out, const Point& point)
+{
+	out << point.m_x << ',' << point.m_y;
+	return out;
+}

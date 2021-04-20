@@ -20,10 +20,13 @@ private:
 public:
 	Field(const std::size_t maxX, const std::size_t maxY) noexcept;
 
-	void addAnt(AbstructAnt&& ant, std::size_t x, std::size_t y);
+	void addAnt(AbstructAnt&& ant, std::size_t x = 0, std::size_t y = 0);
 	void stepForward(const int n = 1);
-	int getColor(const std::size_t x, const std::size_t y) const;
 	void clear();
+
+	AbstructAnt::fieldColor getColor(const std::size_t x, const std::size_t y) const;
+	std::size_t getAntNumber() const;
+	Point getAntsPositions(std::size_t index) const;
 
 	friend std::ostream& operator<<(std::ostream& out, const Field& field);
 };

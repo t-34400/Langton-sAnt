@@ -36,13 +36,15 @@ void Field::stepForward(const int n)
 	}
 }
 
-int Field::getColor(const std::size_t x, const std::size_t y) const { return m_fieldColor[x + y * m_maxX]; }
-
 void Field::clear()
 {
 	for (auto& color : m_fieldColor)
 		color = 0;
 }
+
+int Field::getColor(const std::size_t x, const std::size_t y) const { return m_fieldColor[x + y * m_maxX]; }
+std::size_t Field::getAntNumber() const { return m_ants.size(); }
+Point Field::getAntsPositions(std::size_t index) const { return m_antsPositions.at(index); }
 
 std::ostream& operator<<(std::ostream& out, const Field& field)
 {
@@ -50,7 +52,7 @@ std::ostream& operator<<(std::ostream& out, const Field& field)
 	{
 		for (std::size_t x{ 0 }; x < field.m_maxX; ++x)
 		{
-			out << field.m_fieldColor.at(x + y * field.m_maxY) << ' ';
+			out << field.getColor(x, y) << ' ';
 		}
 		out << '\n';
 	}

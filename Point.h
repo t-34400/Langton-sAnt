@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <iostream>
 
 class Point
 {
@@ -24,4 +25,6 @@ public:
 	latticeIndex_t left();
 
 	latticeIndex_t getLatticeIndex() const;
+
+	friend std::ostream& operator<<(std::ostream& out, const Point& point);
 };

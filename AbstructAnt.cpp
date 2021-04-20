@@ -6,7 +6,7 @@ AbstructAnt::AbstructAnt(const std::vector<turn_t>& turnDirections, direction_t 
 }
 
 AbstructAnt::AbstructAnt(const std::string& turnDirections, direction_t direction)
-	:m_direction{ direction }
+	:m_direction{ direction }, m_directionsLength{ turnDirections.size() }
 {
 	// allocate memory
 	m_turnDirections.reserve(turnDirections.size());
