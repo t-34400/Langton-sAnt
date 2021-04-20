@@ -46,7 +46,8 @@ void Field::clear()
 
 int Field::getColor(const std::size_t x, const std::size_t y) const { return m_fieldColor[x + y * m_maxX]; }
 std::size_t Field::getAntNumber() const { return m_ants.size(); }
-Point Field::getAntsPositions(std::size_t index) const { return m_antsPositions.at(index); }
+Point Field::getAntsPosition(std::size_t index) const { return m_antsPositions.at(index); }
+Point Field::getAntsDirection(std::size_t index) const { return m_antsPositions.at(index); }
 
 std::ostream& operator<<(std::ostream& out, const Field& field)
 {

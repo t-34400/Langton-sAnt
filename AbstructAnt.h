@@ -31,5 +31,6 @@ public:
 	AbstructAnt(const std::vector<turn_t>& turnDirections = { turn::Left,turn::Right }, direction_t direction = direction::UP);
 	AbstructAnt(const std::string& turnDirections, direction_t direction = direction::UP);
 
+	direction_t getCurrentDirection();
 	direction_t getNextDirection(fieldColor color);
 };

@@ -28,7 +28,8 @@ public:
 
 	AbstructAnt::fieldColor getColor(const std::size_t x, const std::size_t y) const;
 	std::size_t getAntNumber() const;
-	Point getAntsPositions(std::size_t index) const;
+	Point getAntsPosition(std::size_t index) const;
+	Point getAntsDirection(std::size_t index) const;
 
 	friend std::ostream& operator<<(std::ostream& out, const Field& field);
 };

@@ -11,7 +11,7 @@ int main()
 		field.stepForward();
 		std::size_t maxAntIndex{ field.getAntNumber() };
 		for (std::size_t antIndex{ 0 }; antIndex < maxAntIndex; ++antIndex)
-			std::cout << "Ant " << antIndex << " is at (" << field.getAntsPositions(antIndex) << ")\n\n";
+			std::cout << "Ant " << antIndex << " is at (" << field.getAntsPosition(antIndex) << ")\n\n";
 	}
 	return 0;
 }
